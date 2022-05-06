@@ -10,9 +10,9 @@ MAINTAINER Devopscube
 RUN yum -y update && \
     yum -y install httpd && \
     yum clean all
-COPY ./script.sh /
-RUN chmod +x /script.sh
-ENTRYPOINT ["/script.sh"]
+COPY ./newscript.sh /
+RUN chmod +x /newscript.sh
+ENTRYPOINT ["/newscript.sh"]
 CMD ["true", "batman", "superman"]
 
 #building Dockerfile with image name script1
