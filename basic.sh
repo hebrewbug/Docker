@@ -13,7 +13,7 @@ RUN yum -y update && \
 COPY ./newscript.sh /
 RUN chmod +x /newscript.sh
 ENTRYPOINT ["/newscript.sh"]
-CMD ["true", "batman", "superman"]
+CMD ["true", "option1", "option2"]
 
 #building Dockerfile with image name script1
 docker build -t script1 .
