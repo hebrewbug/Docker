@@ -1,0 +1,26 @@
+# location of relevant config: /etc/prometheus/prometheus.yml
+# need to replace server.url with your SUSE Manager server URL and adjust username 
+# and password fields to match your SUSE Manager credentials.
+
+# {productname} self-health metrics
+scrape_configs:
+- job_name: 'mgr-server'
+  static_configs:
+    - targets:
+      - 'server.url:9100'  # Node exporter
+      - 'server.url:9187'  # PostgreSQL exporter
+      - 'server.url:5556'  # JMX exporter (Tomcat)
+      - 'server.url:5557'  # JMX exporter (Taskomatic)
+      - 'server.url:9800'  # Taskomatic
+    - targets:
+      - 'server.url:80'    # Message queue
+      labels:
+        __metrics_path__: /rhn/metrics
+
+# Managed systems metrics:
+- job_name: 'mgr-clients'
+  uyuni_sd_configs:
+   - host: "http://server.url"
+     username: "admin"
+     password: "admin"
+     
