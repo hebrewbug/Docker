@@ -25,5 +25,11 @@ systemctl enable --now prometheus
 
 #setting up the config for prometheus(see the relevant example)
 
+#after this restarting of prometheus
+
+systemctl restart prometheus
+
+
+
 
 
